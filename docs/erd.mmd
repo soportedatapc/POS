@@ -1,0 +1,27 @@
+erDiagram
+  ROLES ||--o{ USUARIOS : tiene
+  USUARIOS ||--o{ LOTES : registra
+  USUARIOS ||--o{ ORDENES_MEDICAS : crea
+  USUARIOS ||--o{ VENTAS : crea
+  USUARIOS ||--o{ BITACORA_AUDITORIA : genera
+
+  MEDICAMENTOS ||--o{ LOTES : se_compone
+  MEDICAMENTOS ||--o{ ORDEN_DETALLE : prescribe
+  MEDICAMENTOS ||--o{ VENTA_DETALLE : vende
+  MEDICAMENTOS ||--o{ INVENTARIO_MOVIMIENTOS : afecta
+
+  PROVEEDORES ||--o{ LOTES : abastece
+
+  ORDENES_MEDICAS ||--o{ ORDEN_DETALLE : contiene
+  VENTAS ||--o{ VENTA_DETALLE : contiene
+
+  EMPRESAS ||--o{ CONVENIOS : define
+  EMPRESAS ||--o{ ESTADO_CUENTA_EMPRESA : consolida
+  ESTADO_CUENTA_EMPRESA ||--o{ PAGOS_EMPRESA : recibe
+
+  CORTES_CAJA {
+    uuid id PK
+    uuid usuario_id FK
+    varchar turno
+    varchar estatus
+  }
